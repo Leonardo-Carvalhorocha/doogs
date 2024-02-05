@@ -1,0 +1,14 @@
+.card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  max-width: 800px;
+}
+
+.card img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.comentarios {
+  display: block;
+}
