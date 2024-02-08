@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Feed } from '../components/model/Feed';
 import { Photos } from '../components/model/Photos';
 
@@ -33,4 +33,31 @@ export class ApiDogsService {
       })
     )
   }
+
+  getUser(token: string) {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    });
+
+    return this.httpClient.get(`${this.URL_API}api/user`, {headers})
+    .pipe(
+      tap((user) => {
+        console.log(user)
+      })
+    )
+  }
+
+    getToken(body: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      let corpo = JSON.stringify(body);
+  
+      return this.httpClient.post(`${this.URL_API}jwt-auth/v1/token`, corpo, { headers })
+      .pipe(
+        tap((token) => {
+          console.log(token)
+        })
+      );
+    }
 }

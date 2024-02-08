@@ -7,11 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './feed-comment.component.scss',
 })
 export class FeedCommentComponent implements OnInit {
-  @Input() comments!: Comments;
+  @Input() comments!: Comments[];
 
   constructor() {}
 
   ngOnInit() {
-    console.log(this.comments)
   }
 }

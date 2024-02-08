@@ -6,9 +6,15 @@
 .card {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
   gap: 20px;
   padding: 40px;
-  max-width: 1200px;
   justify-content: center;
 }
 

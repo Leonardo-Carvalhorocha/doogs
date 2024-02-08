@@ -1,6 +1,14 @@
 <mat-list>
-  <mat-list-item>
-    <span matListItemTitle></span>
-    <span matListItemLine>Second line</span>
-  </mat-list-item>
+  @if (comments && comments.length > 0) {
+    @for (item of comments; track $index) {
+      <mat-list-item>
+        <span matListItemTitle>{{ item.comment_author }}</span>
+        <span matListItemLine>{{ item.comment_content }}</span>
+      </mat-list-item>
+    }
+  } @else {
+    <mat-list-item>
+      <span matListItemTitle>Nenhum comentário</span>
+    </mat-list-item>
+  }
 </mat-list>

@@ -4,7 +4,6 @@ import { Feed } from '../../model/Feed';
 import { Unsubscribable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CardFeedComponent } from '../card-feed/card-feed.component';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -18,7 +17,7 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   constructor(
     private dogsService: ApiDogsService,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     private dialog: MatDialog
   ) {}
 

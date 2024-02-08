@@ -1,7 +1,7 @@
+@if(!photo) {
+<mat-progress-spinner diameter="100" mode="indeterminate" style="display: flex; justify-content: center; background: transparent;"></mat-progress-spinner>
+} @else {
 <mat-card class="example-card" class="card">
-  @if(!photo) {
-  <mat-progress-spinner diameter="100" mode="indeterminate"></mat-progress-spinner>
-  } @else {
   <mat-card-header>
     <div>
       <div style="display: flex; gap: 10px;">
@@ -18,7 +18,7 @@
 
 
       <div class="comentarios">
-        <app-feed-comment [comments]="photo.comments"></app-feed-comment>
+        <app-feed-comment [comments]="comments"></app-feed-comment>
       </div>
     </div>
 
@@ -27,5 +27,5 @@
   <mat-card-content>
     <img mat-card-image [src]="photo.photo.src" alt="foto de animal">
   </mat-card-content>
-  }
 </mat-card>
+}

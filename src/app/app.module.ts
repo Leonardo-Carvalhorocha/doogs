@@ -1,32 +1,29 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { FeedModule } from './components/feed/feed.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountModule } from './components/account/account.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SharedModule,
     FeedModule,
-    HttpClientModule
+    HttpClientModule,
+    AccountModule,
+    AppRoutingModule,
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync()
-  ],
+  providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
-  exports: [
-    SharedModule,
-    FeedModule
-  ]
+  exports: [SharedModule, FeedModule, HttpClientModule],
 })
-export class AppModule { }
+export class AppModule {}
