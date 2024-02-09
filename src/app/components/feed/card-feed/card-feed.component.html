@@ -1,6 +1,4 @@
-@if(!photo) {
-<mat-progress-spinner diameter="100" mode="indeterminate" style="display: flex; justify-content: center; background: transparent;"></mat-progress-spinner>
-} @else {
+@if(photo) {
 <mat-card class="example-card" class="card">
   <mat-card-header>
     <div>
@@ -28,4 +26,6 @@
     <img mat-card-image [src]="photo.photo.src" alt="foto de animal">
   </mat-card-content>
 </mat-card>
+} @else {
+<mat-progress-spinner diameter="100" mode="indeterminate"></mat-progress-spinner>
 }

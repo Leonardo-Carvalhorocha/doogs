@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiDogsService } from '../../../services/api-dogs.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+} from '@angular/material/snack-bar';
+import { catchError, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { PerfilUserComponent } from '../../user/perfil-user/perfil-user.component';
 
 @Component({
   selector: 'app-logar-perfil',
@@ -9,10 +16,16 @@ import { ApiDogsService } from '../../../services/api-dogs.service';
 })
 export class LogarPerfilComponent implements OnInit {
   form!: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  email: string = '';
+  password: string = '';
+  authentic: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
-    private serviceDogs: ApiDogsService
+    private serviceDogs: ApiDogsService,
+    private _snackBar: MatSnackBar,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -23,9 +36,34 @@ export class LogarPerfilComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.serviceDogs.getUser("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RvZ3NhcGkub3JpZ2FtaWQuZGV2IiwiaWF0IjoxNzA3MjcyNTMwLCJuYmYiOjE3MDcyNzI1MzAsImV4cCI6MTcwNzM1ODkzMCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMTUifX19.MKwyG-gJPzi0ch5wLdKqgMUsfqJZe4aJIF5upnfYOmg"
-    // ).subscribe()
+    this.authentic = false
+    const email = this.form.controls['email'].value;
+    const password = this.form.controls['password'].value;
 
-    this.serviceDogs.getToken(this.form.value).subscribe()
+    const loading = this.serviceDogs.getToken(email, password).subscribe(
+      (tap) => {
+        this.openSnackBar();
+        this.route.navigate(['/perfil']);
+        this.authentic = true
+      },
+      (catchError) => {
+        this.errorSnackBar();
+        this.authentic = true
+      }
+    );
+  }
+
+  openSnackBar() {
+    this._snackBar.open('login com sucesso!', 'X', {
+      horizontalPosition: this.horizontalPosition,
+      duration: 5000,
+    });
+  }
+
+  errorSnackBar() {
+    this._snackBar.open('Error ao logar', 'X', {
+      horizontalPosition: this.horizontalPosition,
+      duration: 5000,
+    });
   }
 }

@@ -1,19 +1,19 @@
 <div class="card">
   <div class="card-imgs">
-    @if(!photosCardFeed) {
-      <mat-progress-spinner diameter="100" mode="indeterminate"></mat-progress-spinner>
+    @for (item of photosCardFeed; track $index) {
+    @if( photosCardFeed && photosCardFeed.length > 0) {
+    <mat-card class="example-card" [routerLink]="[item.id]" (click)="handleClick()">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+          <img mat-card-image [src]="item.src" alt="foto de animal">
+        </div>
+        <mat-card-title> {{ item.author }} </mat-card-title>
+        <mat-card-subtitle>{{ item.title }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="item.src" alt="fotos dogs">
+    </mat-card>
     } @else {
-      @for (item of photosCardFeed; track $index) {
-        <mat-card class="example-card" [routerLink]="[item.id]" (click)="handleClick()">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image">
-              <img mat-card-image [src]="item.src" alt="foto de animal">
-            </div>
-            <mat-card-title> {{ item.author }} </mat-card-title>
-            <mat-card-subtitle>{{ item.title }}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image [src]="item.src" alt="fotos dogs">
-        </mat-card>
+    <mat-progress-spinner diameter="100" mode="indeterminate"></mat-progress-spinner>
     }
     }
   </div>

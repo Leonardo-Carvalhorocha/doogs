@@ -11,16 +11,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClientModule } from '@angular/common/http';
 import { AccountModule } from './components/account/account.module';
 import { AppRoutingModule } from './app-routing.module';
+import { PerfilUserComponent } from './components/user/perfil-user/perfil-user.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PerfilUserComponent],
   imports: [
     BrowserModule,
     SharedModule,
     FeedModule,
     HttpClientModule,
     AccountModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
