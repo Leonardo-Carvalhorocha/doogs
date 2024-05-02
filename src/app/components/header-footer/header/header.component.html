@@ -1,0 +1,19 @@
+<mat-toolbar class="nav">
+  <button mat-raised-button color="primary" class="pets" routerLink="/feed">
+    <mat-icon>pets</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+
+  <button mat-raised-button color="primary" routerLink="/login">
+    <mat-icon>
+      account_circle
+    </mat-icon>
+    <span>
+      {{ nome ? nome : 'criar/logar' }}
+    </span>
+  </button>
+
+  @if(nome) {
+  <button class="warn" mat-raised-button color="warn" (click)="handleClick()">sair</button>
+  }
+</mat-toolbar>

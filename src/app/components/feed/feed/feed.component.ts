@@ -1,10 +1,12 @@
 import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ApiDogsService } from '../../../services/api-dogs.service';
 import { Feed } from '../../model/Feed';
-import { Unsubscribable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CardFeedComponent } from '../card-feed/card-feed.component';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -12,7 +14,7 @@ import { CardFeedComponent } from '../card-feed/card-feed.component';
 })
 export class FeedComponent implements OnInit, OnDestroy {
   photosCardFeed!: Feed[];
-  listDogs!: Unsubscribable;
+  listDogs!: Subscription;
   id: string = '';
 
   constructor(
@@ -23,7 +25,9 @@ export class FeedComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.listDogs = this.dogsService.getFeedList()
-    .subscribe((cardFeed: Feed[]) =>  this.photosCardFeed = cardFeed);
+    .subscribe((cardFeed: Feed[]) =>  {
+      this.photosCardFeed = cardFeed
+    });
   }
 
   handleClick() {

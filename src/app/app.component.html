@@ -1,23 +1,9 @@
-<mat-toolbar class="nav">
-  <button mat-icon-button class="example-icon" routerLink="/feed">
-    <mat-icon>pets</mat-icon>
-  </button>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" routerLink="/login">
-    <mat-icon>
-      account_circle
-    </mat-icon>
-  </button>
-</mat-toolbar>
-
-<!-- <mat-card>
-  <mat-card-content class="content">
-    <router-outlet></router-outlet>
-  </mat-card-content>
-</mat-card> -->
+<app-header></app-header>
 
 <div>
   <div class="content">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+<app-footer></app-footer>

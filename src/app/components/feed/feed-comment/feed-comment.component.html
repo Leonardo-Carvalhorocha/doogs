@@ -11,4 +11,10 @@
       <span matListItemTitle>Nenhum comentário</span>
     </mat-list-item>
   }
+  <div [formGroup]="form">
+    <mat-form-field>
+      <mat-icon class="icon-comment" (click)="enviarComentario()" matPrefix>comment</mat-icon>
+      <input  matInput formControlName="comments">
+    </mat-form-field>
+</div>
 </mat-list>

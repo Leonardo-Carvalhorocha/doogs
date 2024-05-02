@@ -1,20 +1,19 @@
-.example-spacer {
-  flex: 1 1 auto;
-  max-width: 900px;
+h1,
+h2,
+h3,
+span,
+p,
+li,
+ul {
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.nav {
-  display: flex;
-  justify-content: center;
-}
 
-span {
-  font-size: 16px;
-  font-family: 'Times New Roman', Times, serif;
-}
 
 .content,
 .mat-mdc-card-content:first-child {
   margin: 0;
   padding: 0;
 }
+
+

@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-imgs">
     @for (item of photosCardFeed; track $index) {
-    @if( photosCardFeed && photosCardFeed.length > 0) {
+    @if( item ) {
     <mat-card class="example-card" [routerLink]="[item.id]" (click)="handleClick()">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">

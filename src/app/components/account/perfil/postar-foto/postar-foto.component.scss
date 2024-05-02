@@ -1,0 +1,30 @@
+.form-post-foto {
+  display: grid;
+  justify-items: center;
+  height: 100vh;
+  margin: 100px;
+}
+
+.form-post-foto div {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.form-post-foto #img {
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  display: grid;
+  gap: 10px;
+}
+
+.img {
+  height: 400px;
+}
+
+.img img {
+  border-radius: 1rem;
+  
+}

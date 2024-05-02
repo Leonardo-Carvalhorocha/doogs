@@ -1,0 +1,9 @@
+.icon-comment {
+  z-index: 999;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-comment:hover {
+  transform: scale(110%);
+}

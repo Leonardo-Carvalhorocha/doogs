@@ -8,22 +8,28 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { FeedModule } from './components/feed/feed.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { AccountModule } from './components/account/account.module';
 import { AppRoutingModule } from './app-routing.module';
-import { PerfilUserComponent } from './components/user/perfil-user/perfil-user.component';
+import { HeaderFooterModule } from './components/header-footer/header-footer.module';
 
 @NgModule({
-  declarations: [AppComponent, PerfilUserComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     SharedModule,
     FeedModule,
     HttpClientModule,
     AccountModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HeaderFooterModule
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()),
+    provideClientHydration(),
+  ],
   bootstrap: [AppComponent],
   exports: [SharedModule, FeedModule, HttpClientModule],
 })

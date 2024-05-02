@@ -1,0 +1,35 @@
+<div class="form-post-foto">
+  <div>
+    <div>
+      <form [formGroup]="formulario" (submit)="onSubmit()">
+  
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome" required formControlName="nome">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Peso</mat-label>
+          <input matInput placeholder="peso" type="number" required formControlName="peso">
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Idade</mat-label>
+          <input matInput type="number" placeholder="idade" required formControlName="idade">
+        </mat-form-field>
+  
+        <div>
+          <input (change)="handleImgChange($event)" type="file" name="img" id="img">
+        </div>
+  
+        <button type="submit" mat-raised-button color="primary">{{ authentic ? 'Postar' : 'Postando...' }}</button>
+      </form>
+    </div>
+  
+    @if(setImg && img) {
+    <div class="img">
+      <img [src]="img" alt="">
+    </div>
+    }
+  </div>
+</div>
